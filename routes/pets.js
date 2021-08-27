@@ -55,11 +55,16 @@ module.exports = (app) => {
       return res.redirect('/')
     });
   });
-  
+
   // SEARCH PET
   app.get('/search', (req, res) => {
-    Pet.find().exec((err, pets) => {
-      res.render('pets-index', { pets: pets });    
-    });
-  });
+    term = new RegExp(req.query.term, 'i')
+
+    Pet.find({$or:[
+      {'name': term},
+      {'species': term}
+    ]}).exec((err, pets) => {
+      res.render('pets-index', { pets: pets });
+    })
+  })
 }
