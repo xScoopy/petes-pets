@@ -3,12 +3,22 @@ if (!process.env.PORT) {
   process.env.NODE_ENV = "dev"
 }
 
+//MIDDLEWARE
 const express = require('express');
+
+//provides utilities for working with file and directory paths
 const path = require('path');
 const favicon = require('serve-favicon');
+
+//Morgan is logging middleware
 const logger = require('morgan');
+
+//Parses cookie header and populate req.cookies with an object keyed by the cookie names
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+
+//Lets us use http verps such as put or delete in places
+//where the client doesnt support it
 const methodOverride = require('method-override')
 
 const app = express();
