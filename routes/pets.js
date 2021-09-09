@@ -55,8 +55,9 @@ module.exports = (app) => {
           urlArray.pop();
           var url = urlArray.join('-');
           pet.avatarUrl = url;
-          pet.save();
+          
         });
+        pet.save()
 
         res.send({ pet: pet });
       });
